@@ -2,9 +2,7 @@
 
 This project implements a comprehensive Retrieval-Augmented Generation (RAG) pipeline that can connect to multiple data sources, process structured and unstructured data, and provide summarized, AI-driven answers to user queries. The application is built with Python and features an interactive web interface powered by Streamlit.
 
-![App Screenshot](<img width="1910" height="970" alt="image" src="https://github.com/user-attachments/assets/d312d8ed-b4e2-42b6-be66-2b21d1d69bc8" />
-) 
-*(Suggestion: Replace this with a screenshot of your running application, like the one you shared earlier)*
+<img width="1910" height="970" alt="image" src="https://github.com/user-attachments/assets/d312d8ed-b4e2-42b6-be66-2b21d1d69bc8" />
 
 ## 🚀 Features
 
