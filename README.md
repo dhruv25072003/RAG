@@ -1,9 +1,3 @@
-Certainly! Here’s a **professional, copy-paste-ready README.md**—with improved structure, visual appeal, and clarity—for your [dhruv25072003/RAG](https://github.com/dhruv25072003/RAG) repo.  
-**This preserves your technical content (setup, features, image, etc.), but presents it in a more readable, open-source-friendly style.** You can replace your current README with this:
-
-***
-
-```markdown
 # 📚 Unified RAG Pipeline for Multiple Data Sources
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
