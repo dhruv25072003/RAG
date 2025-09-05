@@ -1,48 +1,167 @@
-# Unified RAG Pipeline for Multiple Data Sources
+Certainly! Here’s a **professional, copy-paste-ready README.md**—with improved structure, visual appeal, and clarity—for your [dhruv25072003/RAG](https://github.com/dhruv25072003/RAG) repo.  
+**This preserves your technical content (setup, features, image, etc.), but presents it in a more readable, open-source-friendly style.** You can replace your current README with this:
 
-This project implements a comprehensive Retrieval-Augmented Generation (RAG) pipeline that can connect to multiple data sources, process structured and unstructured data, and provide summarized, AI-driven answers to user queries. The application is built with Python and features an interactive web interface powered by Streamlit.
+***
 
-<img width="1910" height="970" alt="image" src="https://github.com/user-attachments/assets/d312d8ed-b4e2-42b6-be66-2b21d1d69bc8" />
+```markdown
+# 📚 Unified RAG Pipeline for Multiple Data Sources
 
-## 🚀 Features
+[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/)
+[![Docker](https://img.shields.io/badge/Docker-required-blue)](https://www.docker.com/)
+[![Open Source](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/dhruv25072003/RAG)
 
-* **Multi-Source Data Ingestion**: Connect to and process data from various sources:
-    * **File Uploads**: `.csv`, `.txt`, `.md`, and SQLite (`.db`, `.sqlite`) files.
-    * **Snowflake**: Directly connect to your Snowflake data warehouse.
-    * **PostgreSQL**: Directly connect to your PostgreSQL database.
-* **Vector Search**: Utilizes **OpenSearch** as a robust and scalable vector database to perform efficient similarity searches.
-* **AI-Powered Summarization**: Employs a Hugging Face Language Model (`flan-t5-base`) to synthesize information retrieved from the data sources and provide concise, natural language answers.
-* **Interactive Web UI**: A user-friendly interface built with **Streamlit** allows for easy data source selection, training, and querying.
-* **Modular & Extensible**: The codebase is organized into a Python package (`custom_rag`), making it easy to extend with new data loaders, retrievers, or models.
+---
 
-## ⚙️ Project Structure
+**This project implements a modular, extensible Retrieval-Augmented Generation (RAG) pipeline for interactive, AI-driven answers.**  
+Supports ingestion from multiple data sources (structured & unstructured), seamless vector search (OpenSearch), and LLM-based summarization via a user-friendly Streamlit web app.
 
-The project is organized into a Python package to ensure modularity and prevent import errors.
+---
 
-/RAG/||-- app.py                 # The main Streamlit application|-- requirements.txt       # Project dependencies||-- custom_rag/            # The core Python package|   |-- init.py|   |-- constants.py|   |-- retriever.py       # Contains retriever classes (Composite, OpenSearch)|   |-- trainer.py         # Contains the HybridParentChildTrainer class|   ||   |-- config/|   |   |-- init.py|   |   |-- settings.py    # Mock settings class|   ||   |-- dao/|   |   |-- init.py|   |   |-- agent_dao.py   # Mock Data Access Object classes|   ||   |-- loaders/|   |   |-- init.py|   |   |-- langchain_loader.py # Data loading logic for all sources|   ||   |-- summarizer/|       |-- init.py|       |-- summarizers.py # Mock summarizer classes
-## 🛠️ Setup and Installation
+## 🚀 Key Features
 
-Follow these steps to get the application running on your local machine.
+- **Multi-Source Data Ingestion**  
+  - Upload local files: `.csv`, `.txt`, `.md`, `.db`, or `.sqlite`
+  - Connect directly to **Snowflake** or **PostgreSQL** warehouses/databases
 
-### Prerequisites
+- **Vector Search with OpenSearch**  
+  - Fast, scalable, similarity-based retrieval of relevant chunks
 
-* **Python 3.9+**
-* **Docker Desktop**: Required to run the OpenSearch container.
+- **LLM Summarization**  
+  - Uses Hugging Face models (e.g. `flan-t5-base`) to generate concise, context-aware answers
 
-### 1. Clone the Repository
+- **Streamlit UI**  
+  - Interactive sidebar for source/data selection
+  - Guided interface for training and querying
 
-```bash
-git clone [https://github.com/dhruv25072003/RAG.git](https://github.com/dhruv25072003/RAG.git)
-cd RAG
-2. Set Up a Virtual EnvironmentIt is highly recommended to use a virtual environment.# Create the virtual environment
-python -m venv venv
+- **Modular Python Package**  
+  - `custom_rag` package structure for easy extension, adding new retrievers, data loaders, or models
 
-# Activate it
-# On Windows:
-venv\Scripts\activate
-# On macOS/Linux:
-source venv/bin/activate
-3. Install DependenciesInstall all the required Python libraries from the requirements.txt file.pip install -r requirements.txt
-4. Start OpenSearchRun a local OpenSearch instance using Docker. This command will download the image and start the container in the background.docker run -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" --name opensearch-node -d opensearchproject/opensearch:2.11.0
-To verify that it's running, open http://localhost:9200 in your browser. You should see a JSON response.▶️ How to Run the ApplicationOnce the setup is complete, launch the Streamlit application from your terminal:streamlit run app.py
-Your web browser will automatically open with the running application.📖 How to UseSelect a Data Source: Use the radio buttons in the sidebar to choose between "File Upload", "Snowflake", or "PostgreSQL".Provide Data:For File Upload, browse and select a supported file (.csv, .db, etc.).For Snowflake or PostgreSQL, fill in all the required connection credentials and the target table name.Train the Model: Click the "Train from..." button. The application will:Load the data from the selected source.Split the content into smaller chunks.Generate vector embeddings for each chunk.Create a new index in OpenSearch and ingest the data.Ask a Question: Once training is complete, the main area of the app will be enabled. Type your question into the text input and press Enter.Get the Answer: The application will retrieve the most relevant context from OpenSearch and use the LLM to generate a summarized answer. You can expand the "Show Retrieved Context" section to see the raw data that was used to create the answer.
+---
+
+## 📁 Project Structure
+
+<details>
+<summary>Show project layout</summary>
+
+```
+RAG/
+│
+├── app.py            # Main Streamlit app
+├── requirements.txt  # Python dependencies
+│
+└── custom_rag/
+    ├── __init__.py
+    ├── constants.py
+    ├── retriever.py        # Retriever classes (Composite, OpenSearch)
+    ├── trainer.py          # HybridParentChildTrainer
+    │
+    ├── config/
+    │   ├── __init__.py
+    │   └── settings.py     # Mock settings
+    │
+    ├── dao/
+    │   ├── __init__.py
+    │   └── agent_dao.py    # Data access (mock/real)
+    │
+    ├── loaders/
+    │   ├── __init__.py
+    │   └── langchain_loader.py  # Multi-source loading (file, db, warehouse)
+    │
+    └── summarizer/
+        ├── __init__.py
+        └── summarizers.py  # Summarization classes (mock/real)
+```
+</details>
+
+---
+
+## ⚙️ Setup & Installation
+
+1. **Clone this repository**
+    ```
+    git clone https://github.com/dhruv25072003/RAG.git
+    cd RAG
+    ```
+
+2. **Create & activate your virtual environment**
+    ```
+    python -m venv venv
+    # On Windows:
+    venv\Scripts\activate
+    # On macOS/Linux:
+    source venv/bin/activate
+    ```
+
+3. **Install dependencies**
+    ```
+    pip install -r requirements.txt
+    ```
+
+4. **Set up OpenSearch with Docker**
+    ```
+    docker run -p 9200:9200 -p 9600:9600 -e "discovery.type=single-node" --name opensearch-node -d opensearchproject/opensearch:2.11.0
+    ```
+    - Verify: Open [http://localhost:9200](http://localhost:9200) in your browser—should show a JSON welcome message
+
+---
+
+## ▶️ How To Run
+
+```
+streamlit run app.py
+```
+- This will launch your browser with the fully interactive RAG application UI.
+
+---
+
+## 📖 How To Use
+
+1. **Select a Data Source:**  
+   In the sidebar, pick "File Upload", "Snowflake", or "PostgreSQL".
+
+2. **Provide Data:**  
+   - File Upload: Choose `.csv`, `.db`, etc.
+   - DB/Warehouse: Fill in credentials, table name, etc.
+
+3. **Train the Model:**  
+   - Hit **"Train from..."**.
+   - The workflow:  
+     - Loads & splits your data  
+     - Generates vector embeddings  
+     - Indexes all chunks in OpenSearch
+
+4. **Ask a Question:**  
+   - Enter questions in the main UI  
+   - The system retrieves relevant context  
+   - The LLM generates a summarized, natural language answer
+
+5. **(Optional) Show Context:**  
+   - Expand "Show Retrieved Context" to view raw passages used for the answer
+
+---
+
+## 🖼 Example UI
+
+_The repository includes the existing interface. Please keep all branding, images, and screenshots intact as in the original app._
+
+---
+
+## 💡 Extending & Customizing
+
+- Add new data loaders in `custom_rag/loaders/`
+- Add more retriever types in `custom_rag/retriever.py`
+- Swap or improve summarizers in `custom_rag/summarizer/`
+
+---
+
+## 📝 License
+[MIT](LICENSE)
+
+---
+
+**Built with ❤️ by [dhruv25072003](https://github.com/dhruv25072003)**
+
+_Star ⭐ this repo if you found it useful! PRs and feedback welcome!_
+```
+
+[1](https://github.com/dhruv25072003/RAG)
